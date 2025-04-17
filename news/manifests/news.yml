@@ -43,7 +43,7 @@ spec:
   - host: www.aws9.pri
     http:
       paths:
-        - path: "/news$"
+        - path: "/news($|/)"
           pathType: Prefix
           backend:
             service:

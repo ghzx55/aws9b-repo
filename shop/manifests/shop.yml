@@ -43,7 +43,7 @@ spec:
   - host: www.aws9.pri
     http:
       paths:
-        - path: "/shop$"
+        - path: "/shop($|/)"
           pathType: Prefix
           backend:
             service:
