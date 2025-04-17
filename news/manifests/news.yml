@@ -1,0 +1,52 @@
+apiVersion: apps/v1                 # deployment
+kind: Deployment
+metadata:
+  name: news-deploy
+  namespace: aws9b
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: news
+  template:
+    metadata:
+      labels:
+        app: news
+    spec:
+      containers:
+        - name: news-ctn
+          image: hub.aws9.pri/news:latest
+---
+apiVersion: v1                     # service
+kind: Service
+metadata:
+  name: news-svc
+  namespace: aws9b
+spec:
+  selector:
+    app: news
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1  # ingress
+kind: Ingress
+metadata:
+  name: news-ingress
+  namespace: aws9b
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: www.aws9.pri
+    http:
+      paths:
+        - path: /news
+          pathType: Prefix
+          backend:
+            service:
+              name: news-svc
+              port:
+                number: 80
