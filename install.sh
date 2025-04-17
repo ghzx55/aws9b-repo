@@ -12,4 +12,4 @@ docker push hub.aws9.pri/shop
 docker push hub.aws9.pri/blog
 docker push hub.aws9.pri/news
 
-echo "push 완료"
+echo "harbor에 push 완료"
