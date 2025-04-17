@@ -15,25 +15,28 @@ spec:
     spec:
       containers:
         - name: blog-ctn
-          image: hub.aws9.pri/blog:latest
+          image: hub.aws9.pri/blog:9.0
 ---
-apiVersion: v1                     # service
+apiVersion: v1
 kind: Service
 metadata:
   name: blog-svc
   namespace: aws9b
+  labels:
+    app.kubernetes.io/instance: aws9toy
 spec:
+  type: ClusterIP
   selector:
     app: blog
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
+      protocol: TCP
       targetPort: 80
 ---
 apiVersion: networking.k8s.io/v1  # ingress
 kind: Ingress
 metadata:
-  name: blog-ingress
+  name: aws9b-svc-blog
   namespace: aws9b
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
