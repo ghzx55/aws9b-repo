@@ -52,6 +52,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: blog-svc
+              name: aws9b-svc-blog
               port:
                 number: 80
