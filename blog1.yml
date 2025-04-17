@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: blog-ctn
-          image: hub.aws9.pri/blog/blog:latest
+          image: hub.aws9.pri/blog/blog:1.0
 ---
 apiVersion: v1                     # service
 kind: Service
