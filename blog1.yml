@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: blog-ctn
-          image: hub.aws9.pri/blog:9.0
+          image: hub.aws9.pri/blog:9.2
 ---
 apiVersion: v1
 kind: Service
@@ -25,7 +25,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: aws9toy
 spec:
-  type: LoadBalancer   # ✅ 여기 추가됨
+  type: ClusterIP
   selector:
     app: blog
   ports:
