@@ -17,7 +17,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: blog-ctn
-          image: hub.aws9.pri/blog:9.3
+          image: hub.aws9.pri/blog/blog:9.4
 ---
 apiVersion: v1
 kind: Service
